@@ -1,0 +1,23 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: apache-app
+  namespace: nginx
+  labels:
+    app: apache
+spec:
+  selector:
+    matchLabels:
+      app: apache
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: apache
+    spec:
+      containers:
+      - name: apache-app
+        image: 219412296651.dkr.ecr.ap-south-1.amazonaws.com/autoportal:latest
+        ports:
+        - containerPort: 80
+
